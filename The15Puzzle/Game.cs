@@ -15,12 +15,18 @@ namespace The15Puzzle
         public Game(params int[] notField)
         {
             if (Math.Pow((int)Math.Sqrt(notField.Length), 2) != notField.Length || Different(notField))
-                throw new InvalidDataException("A field is set incorrectly");
-
-            fieldMatrix = GetField(notField);
-            field = notField;
+            {
+                field = null;
+                fieldMatrix = null;
+            }
+            else
+            {
+                fieldMatrix = GetField(notField);
+                field = notField;
+            }
         }
 
+        // Проверка отсутствия одинаковые числа
         private bool Different(int[] mass)
         {
             for (int i = 0; i < mass.Length; i++)
@@ -33,6 +39,7 @@ namespace The15Puzzle
             return false;
         }
 
+        // Получение двумерного массива
         private int[,] GetField(int[] mass)
         {
             int n = (int)Math.Sqrt(mass.Length);
@@ -45,12 +52,29 @@ namespace The15Puzzle
         }
 
         // Индексатор позволяет определить, какое значение находится в игре по координате [x,y].
-        public int Indexer(int x, int y)
-        { }
+        public int this[int x, int y]
+        {
+            get
+            {
+                return fieldMatrix[x, y];
+            }
+            set { }
+        }
 
         // Метод позволяет определить, в какой ячейке находится переданное значение.
-        public GetLocation(int value)
-        { }
+        private int[] GetLocation(int value)
+        {
+            for (int i = 0; i < fieldMatrix.Length; i++)
+            {
+                for (int j = 0; j < fieldMatrix.Length; j++)
+                {
+                    if (fieldMatrix[i, j] == value)
+                        return new[] { i, j };
+
+                }
+            }
+            return null;
+        }
 
         // Метод должен изменять состояние игры, передвигая фишку value на одно из соседних мест, где должен лежать 0. 
         // В случае, если 0 не находится на соседнем месте, должно возникать исключение.

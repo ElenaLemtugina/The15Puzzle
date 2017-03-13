@@ -10,6 +10,11 @@ namespace The15Puzzle
     {
         static void Main(string[] args)
         {
+            Game g = new Game(1, 2, 3, 4, 5);
+            if (g.field != null)
+            {
+
+            }
         }
     }
 }
