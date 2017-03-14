@@ -29,21 +29,8 @@ namespace The15Puzzle
 
         private static bool Incorrect(int[] mass)
         {
-            return Math.Pow((int)Math.Sqrt(mass.Length), 2) != mass.Length || 
-                Different(mass) ||
-                mass.Intersect(Enumerable.Range(0, mass.Length - 1)).Count() != mass.Length;
-        }
-        // Проверка отсутствия одинаковые числа
-        private static bool Different(int[] mass)
-        {
-            for (int i = 0; i < mass.Length; i++)
-            {
-                for (int j = 0; j < mass.Length; j++)
-                {
-                    if (mass[i] == mass[j] && i!=j) return true;
-                }
-            }
-            return false;
+            return Math.Pow((int)Math.Sqrt(mass.Length), 2) != mass.Length ||                          // количество
+                mass.Intersect(Enumerable.Range(0, mass.Length - 1)).Count() != mass.Length;           // эелементы в порядке возрастания
         }
 
         public static Game ReadFile(string path)
