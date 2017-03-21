@@ -15,7 +15,7 @@ namespace The15Puzzle
 
         public Game(params int[] notField)
         {
-            if (Incorrect(notField))
+            if (IncorrectInput(notField))
             {
                 field = null;
                 fieldMatrix = null;
@@ -27,26 +27,12 @@ namespace The15Puzzle
             }
         }
 
-        private static bool Incorrect(int[] mass)
+        public static bool IncorrectInput(int[] mass)
         {
             return Math.Pow((int)Math.Sqrt(mass.Length), 2) != mass.Length ||                          // количество
                 mass.Intersect(Enumerable.Range(0, mass.Length - 1)).Count() != mass.Length;           // эелементы в порядке возрастания
         }
 
-        public static Game ReadFile(string path)
-        {
-            List<int> list = new List<int>();
-            var lines = File.ReadAllLines(path);
-            foreach (var line in lines)
-                foreach (var item in line.Split(new char[] { ',', ' ' }))
-                list.Add(Convert.ToInt32(item));
-
-            if (!Incorrect(list.ToArray()))
-            {
-                return new Game(list.ToArray());
-            }
-            else throw new InvalidDataException();
-        }
 
         // Получение двумерного массива
         private int[,] GetField(int[] mass)
@@ -100,14 +86,6 @@ namespace The15Puzzle
             else throw new ArgumentException();
         }
 
-        public void Print()
-        {
-            for (int i = 0; i < (int)Math.Sqrt(fieldMatrix.Length); i++)
-            {
-                for (int j = 0; j < (int)Math.Sqrt(fieldMatrix.Length); j++)
-                    Console.Write(fieldMatrix[i, j] + "\t ");
-                Console.WriteLine();
-            }
-        }
+
     }
 }
