@@ -73,7 +73,7 @@ namespace The15Puzzle
 
         // Метод должен изменять состояние игры, передвигая фишку value на одно из соседних мест, где должен лежать 0. 
         // В случае, если 0 не находится на соседнем месте, должно возникать исключение.
-        protected void Shift(int value)
+        virtual void Shift(int value)
         {
             int[] zero = GetLocation(0);
             int[] nowValue = GetLocation(value);
