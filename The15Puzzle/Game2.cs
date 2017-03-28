@@ -8,7 +8,13 @@ namespace The15Puzzle
 {
     class Game2 : Game
     {
-public void Mix()
+    
+        public Game2(params int[] blocks) : base(blocks)
+        {
+
+        }
+        
+        public void Mix()
         {
             Random rnd = new Random();
 
