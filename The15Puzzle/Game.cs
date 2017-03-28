@@ -35,7 +35,7 @@ namespace The15Puzzle
 
 
         // Получение двумерного массива
-        private int[,] GetField(int[] mass)
+        protected int[,] GetField(int[] mass)
         {
             int n = (int)Math.Sqrt(mass.Length);
             int[,] field = new int[n, n];
@@ -57,7 +57,7 @@ namespace The15Puzzle
         }
 
         // Метод позволяет определить, в какой ячейке находится переданное значение.
-        private int[] GetLocation(int value)
+        protected int[] GetLocation(int value)
         {
             for (int i = 0; i < fieldMatrix.Length; i++)
             {
@@ -73,7 +73,7 @@ namespace The15Puzzle
 
         // Метод должен изменять состояние игры, передвигая фишку value на одно из соседних мест, где должен лежать 0. 
         // В случае, если 0 не находится на соседнем месте, должно возникать исключение.
-        private void Shift(int value)
+        protected void Shift(int value)
         {
             int[] zero = GetLocation(0);
             int[] nowValue = GetLocation(value);
