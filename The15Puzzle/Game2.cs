@@ -25,7 +25,7 @@ namespace The15Puzzle
             
 
 
-            for (int x = 0; x < fieldMatrix.Length * fieldMatrix.Length; x++)
+            for (int x = 0; x < Math.Pow(fieldMatrix.Length, 4); x++)
             {
 
                 for (int i = 0; i < fieldMatrix.Length; i++)
