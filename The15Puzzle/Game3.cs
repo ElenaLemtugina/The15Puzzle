@@ -37,6 +37,9 @@ namespace ConsoleApplication68
             public override void Shift(int value)
             {
                 base.Shift(value);
+                lastMoveIndex++;
+                if (moves.Count() - 1 != lastMoveIndex)
+                    moves = moves.Take(lastMoveIndex).ToList();
                 moves.Add(value);
             }
 
