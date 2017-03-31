@@ -6,8 +6,6 @@ using System.Threading.Tasks;
 
 namespace The15Puzzle
 {
-    class Game3
-    {
         class Game3 : Game2
         {
             private List<int> moves;
@@ -44,5 +42,5 @@ namespace The15Puzzle
             }
 
         }
-    }
+    
 }
